@@ -1,0 +1,27 @@
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+{{ form_errors(form.nom) }}
+    {{ form_label(form.nom, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.prenom) }}
+    {{ form_label(form.prenom, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.adresse) }}
+    {{ form_label(form.adresse, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.email) }}
+    {{ form_label(form.email, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.image) }}
+    {{ form_label(form.image, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.role) }}
+    {{ form_label(form.role, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.role, {'attr': {'class': 'form-control'}}) }}
+<br>
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

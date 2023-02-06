@@ -1,0 +1,22 @@
+
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+{{ form_errors(form.date) }}
+    {{ form_label(form.date) }}
+    {{ form_widget(form.date) }}
+<br>
+{{ form_errors(form.nomClient) }}
+    {{ form_label(form.nomClient, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.nomClient, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.numeroClient) }}
+    {{ form_label(form.numeroClient, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.numeroClient, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.idProduit) }}
+    {{ form_label(form.idProduit, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.idProduit, {'attr': {'class': 'form-control'}}) }}
+<br>
+
+<button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

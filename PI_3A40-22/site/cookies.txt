@@ -1,0 +1,10 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+.youtube.com	TRUE	/	FALSE	1999999999	GPS	1
+.youtube.com	TRUE	/	FALSE	1999999999	YSC	iG1kGDZvGiI
+.youtube.com	TRUE	/	FALSE	1999999999	VISITOR_INFO1_LIVE	myJX3EpAFO8
+www.youtube.com	TRUE	/	FALSE	1999999999	SameSite	none
+.creativezeune.com	TRUE	/	FALSE	1999999999	woocommerce_items_in_cart	1
+.creativezeune.com	TRUE	/	FALSE	1999999999	wp_woocommerce_session_f92700fc3ae683e01262ddb62ea4bd0f	94d4bc2b929bb41882f2279bd3252406%7C%7C1644590770%7C%7C1644587170%7C%7Cda23b5803b29f120de3691bc00ed5d9e
+.creativezeune.com	TRUE	/	FALSE	1999999999	woocommerce_cart_hash	0cea88283a2af552e189cc507c8ae9b5
+

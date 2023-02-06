@@ -1,0 +1,42 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Accessoire index{% endblock %}
+
+{% block main %}
+<h3><i class="fa fa-angle-right"></i> Accessoires index</h3>
+<a href="{{ path('accessoire_new') }}">Create new</a>
+<div class="row mb">
+    <!-- page start-->
+    <div class="content-panel">
+        <div class="adv-table">
+            <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Quantite</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for accessoire in accessoires %}
+            <tr>
+                <td>{{ accessoire.id }}</td>
+                <td>{{ accessoire.quantite }}</td>
+                <td>
+                    <a href="{{ path('accessoire_show', {'id': accessoire.id}) }}">show</a>
+                    <a href="{{ path('accessoire_edit', {'id': accessoire.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- page end-->
+</div>
+    <!-- /row -->
+{% endblock %}

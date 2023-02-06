@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>My PDF</title>
+</head>
+<body>
+<header>
+    <!--<img src={# {{ asset("bike5.png")}} #}/>-->
+</header>
+
+<style>
+    table, th, td {
+        border:5px solid black;}
+    tr: {background-color: #00a0d5}
+</style>
+<center><h1 style="color: #00c5de "><i class="fa fa-angle-right" ></i> Stock By ÇA ROULE </h1></center>
+<div class="row mb">
+    <!-- page start-->
+    <div class="content-panel">
+        <div class="adv-table">
+
+            {% for stock in stocks %}
+
+
+            <h5 style="color: #1ca59e ">* Nom Du Sock :<h5 style="color: #5e5e5e" ><b>{{ stock.libelle }}</b></h5></h5>
+            <h5 style="color: #1ca59e ">* Prix Du Sock :<h5 style="color: #5e5e5e" ><b>{{ stock.prix }}</b></h5></h5>
+            <h5 style="color: #1ca59e ">* Quantite Du Sock :<h5 style="color: #5e5e5e" ><b>{{ stock.quantite }}</b></h5></h5>
+            <h5 style="color: #1ca59e ">* Disponibilite : <h5 style="color: #5e5e5e" ><b>{{ stock.disponibilite }}</b></h5></h5>
+            <h5 style="color: #1ca59e ">* Produits Du Sock :<h5 style="color: #5e5e5e" ><b>{{ stock.idProduit }}</b></h5></h5><br>
+            <h1 style="color: #ACEB1E">~~~~~~~~~~ ~~~~~~~~~~ ~~~~~~~~~~ ~~~~~~~~~~   </h1>
+
+                {% else %}
+                    <tr>
+                        <td colspan="5">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- page end-->
+</div>
+<!-- /row -->
+
+
+    </script>
+</body>
+</html>

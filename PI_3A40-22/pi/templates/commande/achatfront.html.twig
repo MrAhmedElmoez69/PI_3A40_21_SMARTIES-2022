@@ -1,0 +1,96 @@
+{% extends 'base_front.html.twig' %}
+{% block testcss %}
+
+    <!-- Flashy depends on jQuery -->
+    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Load Flashy default JavaScript -->
+    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+    <!-- Include Flashy default partial -->
+{% endblock %}
+{% block body %}
+
+
+
+    <link rel='stylesheet' id='hello-elementor-css'  href='../wp-content/themes/hello-elementor/style.min8066.css?ver=2.4.1' type='text/css' media='all' />
+    {% if flash %}
+    {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+{% endif %}
+    <main class="site-main post-5 page type-page status-publish hentry" role="main">
+        <header class="page-header">
+
+            <div class="page-content">
+
+                <div class="woocommerce"><div class="woocommerce-notices-wrapper"></div>
+
+
+                    {% if app.user %}
+                    <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
+                        <thead>
+                        <tr>
+                                <td>Numero De Commande</td>
+                                <td>Date D'Achat</td>
+                                <td>Nom Du Client</td>
+                                <td>Nombre Achetée</td>
+                            <td>Bar code</td>
+
+                            </tr>
+                                <tr>
+                                    {% for achat in achats %}
+                                    {% if achat.IdUser.id == app.user.id %}
+
+                                    <th class="Numero Du Commande">{{achat.id}}</th>
+                                    <th class="Date">{{achat.date ? achat.date|date('Y-m-d') : '' }}</th>
+                                    <th class="name">{{achat.nomClient}}</th>
+                                    <th class="numeroClient">{{achat.numeroClient}}</th>
+                                    <th class="fa-barcode">{{ barcode({code: 'string to encode', type: 'c128', format: 'html',color: 'white' }) }}</th>
+
+                                </tr>
+
+                                    {% endif %}
+                                {% endfor %}
+
+
+                            <tbody>
+
+                            <tr class="woocommerce-cart-form__cart-item cart_item">
+
+
+
+
+
+                            <tr>
+                                <td colspan="6" class="actions">
+                                    <a href={{ path('tricc') }}>Trier Par Nombre Du Produit Acheté</a></tr>
+                            <tr>
+                                <td colspan="6" class="actions">
+                            <a href={{ path('tri') }}>Trier Par Date</a></tr>
+
+
+
+                            <label for="site-search">Rechercher Le Nombre Du Commande:</label>
+
+                            <form action="" method="GET">
+                                <input type="search" id="site-search" name="search"
+                                       aria-label="Search through site content">
+                                <button type="submit">Rechercher Par Commande</button>
+                            </form>
+
+                            <h2>Vos Achats</h2>
+
+
+                            <table cellspacing="0" class="shop_table shop_table_responsive">
+
+
+
+                            {% else %} <h1>veuillez vous connecter</h1>
+                            {% endif %}
+
+
+                      {#           <div class="navigation">
+                                    {{ knp_pagination_render(achats) }}
+                                </div>        #}
+                                </section><!-- .comments-area -->
+    </main>
+
+{% endblock %}

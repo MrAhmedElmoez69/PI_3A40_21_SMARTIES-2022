@@ -1,0 +1,13 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Edit PieceDR{% endblock %}
+
+{% block main %}
+    <h1>Edit PieceDR</h1>
+
+    {{ include('piece_dr/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('piece_d_r_index') }}">back to list</a>
+
+    {{ include('piece_dr/_delete_form.html.twig') }}
+{% endblock %}

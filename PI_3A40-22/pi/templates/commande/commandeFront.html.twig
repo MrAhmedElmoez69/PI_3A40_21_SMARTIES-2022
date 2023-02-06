@@ -1,0 +1,97 @@
+{% extends 'base_front.html.twig' %}
+{% block body %}
+
+
+    <link rel='stylesheet' id='hello-elementor-css'
+          href='../wp-content/themes/hello-elementor/style.min8066.css?ver=2.4.1' type='text/css' media='all'/>
+
+    <main class="site-main post-5 page type-page status-publish hentry" role="main">
+        <header class="page-header">
+
+            <div class="page-content">
+
+                <div class="woocommerce-notices-wrapper"></div>
+
+                {% if app.user %}
+                <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
+
+                    <thead>
+
+                    <tr>
+                        <td>Numero De Commande</td>
+                        <td>Nombre De Produit</td>
+                        <td>Prix Du Produit</td>
+                        <td>Votre Produit</td>
+
+                    </tr>
+
+                    <tr>
+                        {% for commande in Commandes %}
+                        {% if commande.IdUser.id == app.user.id %}
+
+                    <tr>
+
+                        <th class="product-id">{{ commande.id }}</th>
+                        <th class="product-price">{{ commande.nbProduits }}</th>
+
+                        <th class="product-Prix">{{ commande.idProduit.prix }}</th>
+                        <td><img style="height: 10%;width: 10%"
+                                 src="{{ asset('img/bike/') ~ commande.idProduit.image }}"></td>
+
+                        <th><a href={{ path('commande_delete_front' , {'id' : commande.id , 'Commande': commande}) }}>delete
+                        </th>
+                        <th><a href={{ path('commande_update_front' , {'id' : commande.id , 'Commande': commande}) }}>Modifier
+                        </th>
+                        <th><a href={{ path('achat_front_new' , {'id': commande.id}) }}>Achat</th>
+
+                    </tr>
+
+
+                    {% endif %}
+                    {% endfor %}
+
+
+                    <tr>
+                        <td colspan="9" class="actions">
+                            <a href={{ path('pdfc') }}>Telechrager Vos Factures</a></tr>
+                    <tr>
+                    <tbody>
+                    <tr class="woocommerce-cart-form__cart-item cart_item">
+
+
+                        <input type="hidden" id="woocommerce-cart-nonce" name="woocommerce-cart-nonce"
+                               value="c00af5c8b7"/><input type="hidden" name="_wp_http_referer"
+                                                          value="/cart/"/>                </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+                    {% else %} <p>Veuiller vous connecter</p>
+                {% endif %}
+
+
+                <div class="cart-collaterals">
+                    <div class="cart_totals ">
+
+
+                        </table>
+
+
+                        <tr>
+
+                            <td colspan="6" class="actions">
+
+
+                                </section><!-- .comments-area -->
+
+    </main>
+
+    <div id="div_chart"></div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <section style="place-items: center " > <script type="text/javascript">
+       {{ gc_draw(pieChart, 'div_chart') }}
+    </script></section>
+
+
+    <header/>
+{% endblock %}

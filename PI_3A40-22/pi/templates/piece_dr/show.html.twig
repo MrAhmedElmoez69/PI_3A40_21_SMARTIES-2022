@@ -1,0 +1,38 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}PieceDR{% endblock %}
+
+{% block main %}
+    <h1>PieceDR</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ piece_d_r.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ piece_d_r.nom }}</td>
+            </tr>
+            <tr>
+                <th>Quantite</th>
+                <td>{{ piece_d_r.quantite }}</td>
+            </tr>
+            <tr>
+                <th>description:</th>
+                <td>{{ piece_d_r.description }}</td>
+            </tr>
+            <tr>
+                <th>image</th>
+                <td><img style="width: 100%" src="{{asset('img/bike/') ~ piece_d_r.image }}" class="img-responsive" alt="Image"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('piece_d_r_index') }}">back to list</a>
+
+    <a href="{{ path('piece_d_r_edit', {'id': piece_d_r.id}) }}">edit</a>
+
+    {{ include('piece_dr/_delete_form.html.twig') }}
+{% endblock %}

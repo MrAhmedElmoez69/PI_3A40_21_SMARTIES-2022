@@ -1,0 +1,11 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}New Achat{% endblock %}
+
+{% block main %}
+    <h1>Create new Achat</h1>
+
+    {{ include('achat/_form.html.twig') }}
+
+    <a href="{{ path('achat_index') }}">back to list</a>
+{% endblock %}

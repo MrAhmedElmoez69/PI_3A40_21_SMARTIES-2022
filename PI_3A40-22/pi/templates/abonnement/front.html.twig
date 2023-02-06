@@ -1,0 +1,70 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Abonnement{% endblock %}
+
+{% block body %}
+
+    <div class="elementor-section elementor-top-section elementor-element elementor-element-5b549ae elementor-section-boxed elementor-section-height-default elementor-section-height-default">
+            <form action="" method="GET">
+                <input type="search" id="site-search" name="search" placeholder="recherche via le type"
+                       aria-label="Search through site content">
+
+                <button type="submit">Search</button>
+
+            </form><br>
+        {% if app.user %}
+            <div class="elementor-row">
+               &nbsp; &nbsp; &nbsp; &nbsp; <a href={{ path('triabonnement') }}>Trier Les dates des locations </a>
+                <div class="elementor-container elementor-column-gap-default">
+
+                    <p></p><a href={{ path("abonnement_front_new") }}>Acheter un abonnement</a>
+                </div>
+            </div>
+            <div class="elementor-container elementor-column-gap-default">
+
+
+                <table class="table">
+
+                    <thead>
+                    <th>Reference</th>
+                    <th>Type</th>
+                    <th>Date debut</th>
+                    <th>Date fin</th>
+                    <th>Prix</th>
+                    <th>Acheter location</th>
+                    </thead>
+                    <tbody>
+                    {% for abonnement in abonnements %}
+                        {% if abonnement.idUser.id == app.user.id %}
+                            <tr>
+                                <td>{{ abonnement.id }}</td>
+                                <td>{{ abonnement.type }}</td>
+                                <td>{{ abonnement.dated ? abonnement.dated|date('Y-m-d') : '' }}</td>
+                                <td>{{ abonnement.datef ? abonnement.datef|date('Y-m-d') : '' }}</td>
+                                <td>{{ abonnement.prix }}</td>
+                                <td><a href={{ path('location_front_new',{'id':abonnement.id})}}>Acheter</a> </td>
+
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
+
+        {% else %}
+            <p>Veuillez vous connecter</p>
+        {% endif %}
+
+
+    </div>
+    </div>
+
+{% endblock %}
+{% block jstable %}
+
+
+{% endblock %}

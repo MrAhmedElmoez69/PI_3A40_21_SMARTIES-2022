@@ -1,0 +1,37 @@
+
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+   {{ form_errors(form.idProduit) }}
+    {{ form_label(form.idProduit, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.idProduit, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.DateDebut) }}
+    {{ form_label(form.DateDebut) }}
+    {{ form_widget(form.DateDebut) }}
+<br>
+{{ form_errors(form.DateFin) }}
+    {{ form_label(form.DateFin) }}
+    {{ form_widget(form.DateFin) }}
+<br>
+{{ form_errors(form.adresse) }}
+    {{ form_label(form.adresse, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.etat) }}
+    {{ form_label(form.etat, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.etat, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.description) }}
+    {{ form_label(form.description, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.reclamation) }}
+    {{ form_label(form.reclamation, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.reclamation, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.relation) }}
+    {{ form_label(form.relation, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.relation, {'attr': {'class': 'form-control'}}) }}
+<br>
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

@@ -1,0 +1,44 @@
+{% extends 'base_front.html.twig' %}
+
+
+{% block body %}
+    <div class="elementor elementor-572 elementor-location-single post-522 page type-page status-publish hentry">
+    <div class="elementor-section-wrap">
+    <section
+            class="elementor-section elementor-top-section elementor-element elementor-element-49503fd elementor-section-boxed elementor-section-height-default elementor-section-height-default">
+        <div class="elementor-container elementor-column-gap-default">
+            <div class="elementor-row">
+                <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-92ccb14"
+                     data-id="92ccb14" data-element_type="column">
+                    <div class="elementor-column-wrap elementor-element-populated">
+                        <div class="elementor-widget-wrap">
+                            <div class="elementor-element elementor-element-2fa29ff elementor-widget elementor-widget-text-editor"
+                                 data-id="2fa29ff" data-element_type="widget">
+                                <div class="elementor-widget-container elementor-text-editor elementor-clearfix">
+                                    <h4>Modifier le sujet</h4>
+                                </div>
+                            </div>
+                            <div class="elementor-element elementor-element-bd7762c elementor-button-align-start elementor-widget elementor-widget-form">
+                                <div class="elementor-widget-container">
+                                    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                                    <div class="elementor-form-fields-wrapper elementor-labels-above">
+                                        <div class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-message elementor-col-100">
+                                            {{ form_errors(form.titre) }}
+                                            {{ form_widget(form.titre, {'attr': {'class':' elementor-field elementor-size-lg  elementor-field-textual','placeholder':'Titre'}}) }}
+                                        </div>
+                                        <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_9da7361 elementor-col-100">
+                                            {{ form_errors(form.contenu) }}
+                                            {{ form_widget(form.contenu, {'attr': {'class':' elementor-field-textual elementor-field elementor-size-lg','placeholder':'Contenu'}}) }}
+                                        </div>
+                                        <button type="submit">Send</button>
+                                    </div>
+                                    {{ form_end(form) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

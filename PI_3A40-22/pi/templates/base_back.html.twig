@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <title>{% block title %}Backoffice {% endblock %}</title>
+
+    <!-- Favicons -->
+    <link href={{ asset('img/favicon1.png') }} rel="icon">
+    <link href={{ asset('img/apple-touch-icon.png') }} rel="apple-touch-icon">
+
+    <!-- Bootstrap core CSS -->
+
+    {% block css %}
+        <link href={{ asset('lib/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
+        <!--external css-->
+        <link href={{ asset('lib/font-awesome/css/font-awesome.css') }} rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href={{ asset('css/zabuto_calendar.css') }}>
+        <link rel="stylesheet" type="text/css" href={{ asset('lib/gritter/css/jquery.gritter.css') }}/>
+        <!-- Custom styles for this template -->
+        <link href={{ asset('css/style.css') }} rel="stylesheet">
+        <link href={{ asset('css/style-responsive.css') }} rel="stylesheet">
+        <script src={{ asset('lib/chart-master/Chart.js') }}></script>
+    {% endblock %}
+    <!-- =======================================================
+      Template Name: Dashio
+      Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
+      Author: TemplateMag.com
+      License: https://templatemag.com/license/
+    ======================================================= -->
+</head>
+
+<body>
+<section id="container">
+    <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+        <div class="sidebar-toggle-box">
+            <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+        </div>
+        <!--logo start-->
+        <a href="index.html" class="logo"><b>ça<span>ROULE</span></b></a>
+        <!--logo end-->
+        <div class="nav notify-row" id="top_menu">
+        </div>
+        <div class="top-menu">
+            <ul class="nav pull-right top-menu">
+                <li><a class="logout" href={{ path("app_logout") }}>Logout</a></li>
+            </ul>
+        </div>
+    </header>
+    <!--header end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar" class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+                <h5 class="centered">Admin</h5>
+
+                <li class="menu"><li><a href="{{ path('commande_index') }}"><i class="fa fa-shopping-cart"></i>Gestion De Commande</a></li></li>
+                <li class="menu"><li><a href="{{ path('achat_index') }}"><i class="fa fa-money"></i>Gestion D'Achat</a></li></li>
+
+
+                    <li class="menu"><li><a href="{{ path('maintenance_index') }}"><i class="fa fa-cog"></i>Gestion de Maintenance</a></li></li>
+                    <li class="menu"><li><a href="{{ path('reclamation_index') }}"><i class="fa fa-exclamation-triangle"></i>Gestion De Reclamation</a></li></li>
+
+
+
+                    <li class="menu"><li>
+                <li><a href="{{ path('users_index') }}"><i class="fa fa-user"></i>Users</a></li>
+                    </li>
+                        <li class="menu"><li>
+                <li><a href="{{ path('sujet_index') }}"><i class="fa fa-comments"></i>Sujets</a></li>
+                        </li>
+                            <li class="menu"><li>
+                <li><a href="{{ path('message_index') }}"><i class="fa fa-comment"></i>Messages</a></li>
+                            </li>
+                </li>
+
+                <li class="menu"><li><a href="{{ path('produit_index') }}"><i class="fa fa-truck"></i>Gestion des Produits</a></li></li>
+                <li class="menu"><li><a href="{{ path('favoris_index') }}"><i class="fa fa-heart"></i>Liste des Produits Favoris</a></li></li>
+                <li class="menu"><li><a href="{{ path('stock_index') }}"><i class="fa fa-archive"></i>Gestion de stockage</a></li></li>
+                <li class="menu"><li><a href="{{ path('emplacement_index') }}"><i class="fa fa-map-marker"></i>Gestion d'emplacement</a></li></li>
+                </li>
+
+                    <li class="sub-menu"><li><a href="{{ path('abonnement_index') }}"><i class="fa fa-share"></i>Gestion des Abonnements</a></li></li>
+                    <li class="sub-menu"><li><a href="{{ path('location_index') }}"><i class="fa fa-location-arrow"></i>Gestion des Locations</a></li></li>
+                </li>
+                    <li class="menu"><li><a href="{{ path('evenement_index') }}"><i class="fa fa-bullhorn"></i>Les Evenements</a></li></li>
+                    <li class="menu"><li><a href="{{ path('activite_index') }}"><i class="fa fa-calendar-check-o"></i>Les Activités</a></li></li>
+                <li class="menu"><li><a href="{{ path('participation_index') }}"><i class="fa fa-calendar-check-o"></i>Les participations</a></li></li>
+                </li>
+
+
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--sidebar end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            {% block main %}
+            {% endblock %}
+        </section>
+    </section>
+    <!--main content end-->
+
+    <!--footer end-->
+</section>
+{% block js %}
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src={{ asset("lib/jquery/jquery.min.js") }}></script>
+
+    <script src={{ asset("lib/bootstrap/js/bootstrap.min.js") }}></script>
+    <script class="include" type="text/javascript" src={{ asset("lib/jquery.dcjqaccordion.2.7.js") }}></script>
+    <script src={{ asset("lib/jquery.scrollTo.min.js") }}></script>
+    <script src={{ asset("lib/jquery.nicescroll.js") }} type="text/javascript"></script>
+    <script src={{ asset("lib/jquery.sparkline.js") }}></script>
+    <!--common script for all pages-->
+    <script src={{ asset("lib/common-scripts.js") }}></script>
+    <script type="text/javascript" src={{ asset("lib/gritter/js/jquery.gritter.js") }}></script>
+    <script type="text/javascript" src={{ asset("lib/gritter-conf.js") }}></script>
+    <!--script for this page-->
+
+
+
+{% endblock %}
+
+{% block jstable %}
+{% endblock %}
+</body>
+
+</html>

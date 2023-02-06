@@ -1,0 +1,22 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Favoris{% endblock %}
+
+{% block main %}
+    <h1>Favoris</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ favori.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('favoris_index') }}"><button type="button" class="btn btn-theme02"><i class="fa fa-backward"></i> Back</button></a>
+
+    <a href="{{ path('favoris_edit', {'id': favori.id}) }}"><button type="button" class="btn btn-theme02"><i class="fa fa-edit"></i> Modifier</button></a>
+
+    {{ include('favoris/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block testcss %}
+
+
+{% endblock %}
+
+{% block title %}Reclamation{% endblock %}
+
+{% block body %}
+
+
+                <table class="table">
+
+                    <thead>
+                    <th>Reference</th>
+                    <th>Date d'envoi</th>
+                    <th>Objet</th>
+                    <th>Description</th>
+                    </thead>
+                    <tbody>
+                    {% for reclamation in reclamations %}
+                        {% if reclamation.idUser.id == app.user.id %}
+                            <tr>
+                                <td>{{ reclamation.id }}</td>
+                                <td>{{ reclamation.date ? reclamation.date|date('Y-m-d') : '' }}</td>
+                                <td>{{ reclamation.objet }}</td>
+                                <td>{{ reclamation.description }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+
+{% endblock %}
+{% block jstable %}
+
+
+{% endblock %}

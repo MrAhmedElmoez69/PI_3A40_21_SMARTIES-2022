@@ -1,0 +1,31 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Commande{% endblock %}
+
+{% block body%}
+    <style>
+        .test123{
+            color:green !important;
+        }
+
+    </style>
+    <h1>Create new Commande</h1>
+    <a href="{{ path('commandefront') }}">Aller A La Commande</a>
+
+
+    {{ form_start(form) }}
+    {{ form_errors(form.nbProduits) }}
+    {{ form_widget(form.nbProduits, {'attr': {'class': 'form-control , elementor-field elementor-size-lg  elementor-field-textual' , 'placeholder':'Nombre produit'}}) }}
+    <br>
+    {{ form_errors(form.idProduit) }}
+    <div class="ekit-test123">
+        {{ form_label(form.idProduit,null , {'label_attr':{'class':'test123'}})}}
+    </div>
+    {{ form_widget(form.idProduit, {'attr': {'class': 'form-control'}}) }}
+    <br>
+    <button class="btn">{{ button_label|default('Ajouter') }}</button>
+
+
+    {{ form_end(form) }}
+
+{%  endblock %}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en-US">
+
+<!-- Mirrored from ergo.creativezeune.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Feb 2022 14:45:07 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/><!-- /Added by HTTrack -->
+<head>
+    <style>
+        h2 {
+            color: indianred;
+            text-align: center;
+        }
+
+        table, td, th {
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th, td {
+            padding: 20px;
+        }
+        td {
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+<h2> Votre location </h2>
+<table class="table" align="center" >
+
+    <thead>
+    <th>Reference</th>
+    <th>Date</th>
+    <th>Heure</th>
+    <th>Duree (en jours )</th>
+    </thead>
+    <tbody>
+    {% for location in locations %}
+        {% if location.idUser.id == app.user.id %}
+            <tr>
+                <td>{{ location.id }}</td>
+                <td>{{ location.date ? location.date|date('Y-m-d') : '' }}</td>
+                <td>{{ location.heure ? location.heure|date('H:m') : ''}}</td>
+                <td>{{ location.duree }}</td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

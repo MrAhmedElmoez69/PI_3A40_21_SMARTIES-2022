@@ -1,0 +1,27 @@
+
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+
+{{ form_errors(form.date) }}
+    {{ form_label(form.date) }}
+    {{ form_widget(form.date) }}
+<br>
+{{ form_errors(form.heure) }}
+    {{ form_label(form.heure) }}
+    {{ form_widget(form.heure) }}
+<br>
+{{ form_errors(form.duree) }}
+    {{ form_label(form.duree, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.duree, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.idUser) }}
+    {{ form_label(form.idUser, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.idUser, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.idAbonnement) }}
+    {{ form_label(form.idAbonnement, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.idAbonnement, {'attr': {'class': 'form-control'}}) }}
+<br>
+
+<button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

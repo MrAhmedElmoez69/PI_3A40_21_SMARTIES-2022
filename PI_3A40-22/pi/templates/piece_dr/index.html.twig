@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PieceDR index{% endblock %}
+
+{% block body %}
+<h3><i class="fa fa-angle-right"></i> Piéce de rechange index</h3>
+<a href="{{ path('piece_d_r_new') }}">Create new</a>
+<div class="row mb">
+    <!-- page start-->
+    <div class="content-panel">
+        <div class="adv-table">
+            <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Quantite</th>
+                <th>description</th>
+                <th>image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for piece_d_r in piece_d_rs %}
+            <tr>
+                <td>{{ piece_d_r.id }}</td>
+                <td>{{ piece_d_r.nom }}</td>
+                <td>{{ piece_d_r.quantite }}</td>
+                <td>{{ piece_d_r.description }}</td>
+                <td><img style="width: 100%" src="{{asset('img/bike/') ~ piece_d_r.image }}" class="img-responsive" alt="Image"></td>
+                <td>
+                    <a href="{{ path('piece_d_r_show', {'id': piece_d_r.id}) }}">show</a>
+                    <a href="{{ path('piece_d_r_edit', {'id': piece_d_r.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- page end-->
+</div>
+    <!-- /row -->
+{% endblock %}

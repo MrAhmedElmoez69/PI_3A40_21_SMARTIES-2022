@@ -1,0 +1,33 @@
+
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+   {{ form_errors(form.nom) }}
+    {{ form_label(form.nom, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.dateD) }}
+    {{ form_label(form.dateD) }}
+    {{ form_widget(form.dateD) }}
+<br>
+{{ form_errors(form.dateF) }}
+    {{ form_label(form.dateF) }}
+    {{ form_widget(form.dateF) }}
+<br>
+{{ form_errors(form.lieu) }}
+    {{ form_label(form.lieu, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.lieu, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.type) }}
+    {{ form_label(form.type, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.nb_participants) }}
+    {{ form_label(form.nb_participants, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.nb_participants, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.nb_places) }}
+    {{ form_label(form.nb_places, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.nb_places, {'attr': {'class': 'form-control'}}) }}
+<br>
+    <button class="btn" >{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

@@ -1,0 +1,103 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Users index{% endblock %}
+
+{% block main %}
+    <style>
+        table, th, td {
+            border:2px solid black;}
+        tr:hover {background-color: #4ECDC4}
+    </style>
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <h3><i class="fa fa-angle-right"></i> Users index</h3>
+            <div class="row mb">
+                <!-- page start-->
+                <div class="content-panel">
+                    <div class="adv-table">
+                        <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered"
+                               id="hidden-table-info">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>Adresse</th>
+                                <th>Email</th>
+                                <th>Image</th>
+                                <th>Role</th>
+                                <th>actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for user in Users %}
+                                <tr>
+                                    <td>{{ user.id }}</td>
+                                    <td>{{ user.nom }}</td>
+                                    <td>{{ user.prenom }}</td>
+                                    <td>{{ user.adresse }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td>{{ user.image }}</td>
+                                    <td>{{ user.role }}</td>
+                                    <td>
+                                        <a type="button"  class="btn btn-danger btn-xs fa fa-ban" href="{{ path('banUser', {'id': user.id}) }}"> ban</a>
+                                        <a type="button"  class="btn btn-success btn-xs fa fa-check" href="{{ path('unbanUser', {'id': user.id}) }}"> unban & confirm</a>
+                                        <br>
+                                        <a type="button"  class="btn btn-success btn-xs fa fa-eye" href="{{ path('users_show', {'id': user.id}) }}"> show</a>
+                                        <a type="button"  class="btn btn-primary btn-xs fa fa-pencil" href="{{ path('users_edit', {'id': user.id}) }}"> edit</a>
+                                        <!--form method="post" action="{{ path('users_delete', {'id': user.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+                                            <button  class="btn btn-danger btn-xs fa fa-trash-o">delete</button>
+                                        </form-->
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="9">no records found</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- page end-->
+            </div>
+            <!-- /row -->
+
+        </div>
+
+    </div>
+    <div class="col-lg-1"></div>
+
+{% endblock %}
+        {% block jstable %}
+<script type="text/javascript" language="javascript" src={{ asset("lib/advanced-datatable/js/jquery.js")}}></script>
+<script type="text/javascript" language="javascript" src={{ asset("lib/advanced-datatable/js/jquery.dataTables.js")}}></script>
+<script type="text/javascript" src={{ asset("lib/advanced-datatable/js/DT_bootstrap.js")}}></script>
+<script type="text/javascript">
+    function fnFormatDetails(oTable, nTr) {
+        var aData = oTable.fnGetData(nTr);
+        return sOut;
+    }
+
+    $(document).ready(function() {
+        var nCloneTh = document.createElement('th');
+        var nCloneTd = document.createElement('td');
+        nCloneTd.innerHTML = '<img src={{ asset("lib/advanced-datatable/images/details_open.png")}}>';
+        nCloneTd.className = "center";
+
+        var oTable = $('#hidden-table-info').dataTable({
+            "aoColumnDefs": [{
+                "bSortable": false,
+                "searchable":false,
+                "aTargets": [7]
+            }],
+            "aaSorting": [
+                [0, 'asc']
+            ]
+        });
+
+    });
+</script>
+{% endblock %}

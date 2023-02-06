@@ -1,0 +1,27 @@
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+   {{ form_errors(form.libelle) }}
+    {{ form_label(form.libelle, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.libelle, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.prix) }}
+    {{ form_label(form.prix, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.quantite) }}
+    {{ form_label(form.quantite, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.quantite, {'attr': {'class': 'form-control'}}) }}
+<br>
+<br>
+{{ form_errors(form.disponibilite) }}
+    {{ form_label(form.disponibilite, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.disponibilite, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.idProduit) }}
+    {{ form_label(form.idProduit, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.idProduit, {'attr': {'class': 'form-control'}}) }}
+<br>
+<button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+
+

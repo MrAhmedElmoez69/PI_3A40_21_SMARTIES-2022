@@ -1,0 +1,16 @@
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+   {{ form_errors(form.lieu) }}
+    {{ form_label(form.lieu, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.lieu, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.capacite) }}
+    {{ form_label(form.capacite, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.capacite, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.Stock) }}
+    {{ form_label(form.Stock, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.Stock, {'attr': {'class': 'form-control'}}) }}
+<br>
+<button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

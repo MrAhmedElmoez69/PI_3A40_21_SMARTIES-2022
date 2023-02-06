@@ -1,0 +1,26 @@
+
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+   {{ form_errors(form.libelle) }}
+    {{ form_label(form.libelle, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.libelle, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.image) }}
+    {{ form_label(form.image, NULL, {'label_attr': {'class': 'control-label col-lg-2 '}}) }}
+    {{ form_widget(form.image, {'attr': {'class': 'form-control fa fa-upload'}}) }}
+<br>
+{{ form_errors(form.description) }}
+    {{ form_label(form.description, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+<br>
+<br>
+{{ form_errors(form.prix) }}
+    {{ form_label(form.prix, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.type) }}
+    {{ form_label(form.type, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+<br>
+<button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

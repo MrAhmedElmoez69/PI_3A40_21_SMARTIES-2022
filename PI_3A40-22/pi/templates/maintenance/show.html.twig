@@ -1,0 +1,54 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Maintenance{% endblock %}
+
+{% block main %}
+    <h1>Maintenance</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ maintenance.id }}</td>
+        <tr>
+            <th>Id</th>
+            <td>{{ maintenance.relation }}</td>
+        </tr>
+        <tr>
+            <th>Id produit</th>
+            <td>{{ maintenance.idProduit }}</td>
+        </tr>
+        <tr>
+            <th>date debut</th>
+            <td>{{ maintenance.DateDebut ? maintenance.DateDebut|date('Y-m-d') : '' }}</td>
+        </tr>
+        <tr>
+            <th>date fin</th>
+            <td>{{ maintenance.DateFin ? maintenance.DateFin|date('Y-m-d') : '' }}</td>
+        </tr>
+        <tr>
+            <th>adresse</th>
+            <td>{{ maintenance.adresse }}</td>
+        </tr>
+        <tr>
+            <th>reclamation id</th>
+            <td>{{ maintenance.reclamation }}</td>
+        </tr>
+        <tr>
+            <th>description</th>
+            <td>{{ maintenance.description }}</td>
+        </tr>
+        <tr>
+            <th>etat</th>
+            <td>{{ maintenance.etat }}</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('maintenance_index') }}">back to list</a>
+
+    <a href="{{ path('maintenance_edit', {'id': maintenance.id}) }}">edit</a>
+
+    {{ include('maintenance/_delete_form.html.twig') }}
+{% endblock %}

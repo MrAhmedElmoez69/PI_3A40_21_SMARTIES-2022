@@ -1,0 +1,219 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Maintenance{% endblock %}
+
+{% block body %}
+
+
+    {% if app.user %}
+        <section
+                class="elementor-section elementor-top-section elementor-element elementor-element-e517b58 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+                data-id="e517b58" data-element_type="section"
+                data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+            <div class="elementor-container elementor-column-gap-default">
+                <div class="elementor-row">
+                    <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-2985f95"
+                         data-id="2985f95" data-element_type="column">
+                        <div class="elementor-column-wrap elementor-element-populated">
+                            <div class="elementor-widget-wrap">
+                                <div class="elementor-element elementor-element-2b1a4fc premium-header-block animated-slow elementor-hidden-phone elementor-invisible elementor-widget elementor-widget-premium-addon-dual-header"
+                                     data-id="2b1a4fc" data-element_type="widget"
+                                     data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:500}"
+                                     data-widget_type="premium-addon-dual-header.default">
+                                    <div class="elementor-widget-container">
+                                        <div class="premium-dual-header-container">
+                                            <div class="premium-dual-header-first-container">
+                                                <h2 class="premium-dual-header-first-header premium-dual-header-first-clip stroke gradient">
+                                                    <span class="premium-dual-header-first-span">CATEGORIES </span><span
+                                                            class="premium-dual-header-second-header "></span></h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="elementor-element elementor-element-e55ca1c elementor-widget elementor-widget-heading"
+                                     data-id="e55ca1c" data-element_type="widget" data-widget_type="heading.default">
+                                    <div class="elementor-widget-container">
+                                        <h2 class="elementor-heading-title elementor-size-default">Vos maintenances en
+                                            cours</h2></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% for maintenance in maintenances %}
+            {% if maintenance.relation.id == app.user.id %}
+            {% if maintenance.etat == "non termine" %}
+                <section
+                        class="elementor-section elementor-inner-section elementor-element elementor-element-8f37961 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+                        data-id="8f37961" data-element_type="section">
+                    <div class="elementor-container elementor-column-gap-default">
+                        <div class="elementor-row">
+                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-4952d6b"
+                                 data-id="4952d6b" data-element_type="column">
+                                <div class="elementor-column-wrap elementor-element-populated">
+                                    <div class="elementor-widget-wrap">
+                                        <div class="elementor-element elementor-element-417aa0e elementor-widget elementor-widget-woocommerce-breadcrumb"
+                                             data-id="417aa0e" data-element_type="widget"
+                                             data-widget_type="woocommerce-breadcrumb.default">
+                                            <div class="elementor-widget-container">
+                                                <nav class="woocommerce-breadcrumb"><a href="">Maintenance
+                                                        n°: {{ maintenance.id }} </a></nav>
+                                                <nav class="woocommerce-breadcrumb"><a
+                                                            href="">Location: </a> {{ maintenance.adresse }}
+                                                </nav>
+                                            </div>
+                                        </div>
+                                        <div class="elementor-element elementor-element-60901d3 elementor-widget elementor-widget-woocommerce-product-content"
+                                             data-id="60901d3" data-element_type="widget"
+                                             data-widget_type="woocommerce-product-content.default">
+                                            <div class="elementor-widget-container">
+                                                <h2>Etat: {{ maintenance.etat }} </h2>
+                                                <p>Description : {{ maintenance.description }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="elementor-element elementor-element-9cbe1f3 elementor-widget elementor-widget-heading"
+                                             data-id="9cbe1f3" data-element_type="widget"
+                                             data-widget_type="heading.default">
+                                            <div class="elementor-widget-container">
+                                                <h3 class="elementor-heading-title elementor-size-default">Réclamation
+                                                    n° :{{ maintenance.reclamation.id }}</h3>
+                                                <h3 class="elementor-heading-title elementor-size-default"> Reference
+                                                    piece rechange : {{ maintenance.idProduit.id }}</h3>
+                                                <h3 class="elementor-heading-title elementor-size-default">Période</h3>
+                                            </div>
+                                        </div>
+                                        <div class="elementor-element elementor-element-b6a7112 elementor-widget elementor-widget-woocommerce-product-short-description"
+                                             data-id="b6a7112" data-element_type="widget"
+                                             data-widget_type="woocommerce-product-short-description.default">
+                                            <div class="elementor-widget-container">
+                                                <div class="woocommerce-product-details__short-description">
+                                                    <p>
+                                                        date {{ maintenance.DateDebut ? maintenance.DateDebut|date('Y-m-d') : '' }}</p>
+                                                    <p>
+                                                        date {{ maintenance.DateFin ? maintenance.DateFin|date('Y-m-d') : '' }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+            {% endif %}
+        {% endfor %}
+
+        <section
+                class="elementor-section elementor-top-section elementor-element elementor-element-e517b58 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+                data-id="e517b58" data-element_type="section"
+                data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+            <div class="elementor-container elementor-column-gap-default">
+                <div class="elementor-row">
+                    <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-2985f95"
+                         data-id="2985f95" data-element_type="column">
+                        <div class="elementor-column-wrap elementor-element-populated">
+                            <div class="elementor-widget-wrap">
+                                <div class="elementor-element elementor-element-2b1a4fc premium-header-block animated-slow elementor-hidden-phone elementor-invisible elementor-widget elementor-widget-premium-addon-dual-header"
+                                     data-id="2b1a4fc" data-element_type="widget"
+                                     data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:500}"
+                                     data-widget_type="premium-addon-dual-header.default">
+                                    <div class="elementor-widget-container">
+                                        <div class="premium-dual-header-container">
+                                            <div class="premium-dual-header-first-container">
+                                                <h2 class="premium-dual-header-first-header premium-dual-header-first-clip stroke gradient">
+                                                    <span class="premium-dual-header-first-span">CATEGORIES </span><span
+                                                            class="premium-dual-header-second-header "></span></h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="elementor-element elementor-element-e55ca1c elementor-widget elementor-widget-heading"
+                                     data-id="e55ca1c" data-element_type="widget" data-widget_type="heading.default">
+                                    <div class="elementor-widget-container">
+                                        <h2 class="elementor-heading-title elementor-size-default">Vos maintenances terminées</h2></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% for maintenance in maintenances %}
+            {% if maintenance.relation.id == app.user.id %}
+            {% if maintenance.etat == "termine" %}
+                <section
+                        class="elementor-section elementor-inner-section elementor-element elementor-element-8f37961 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+                        data-id="8f37961" data-element_type="section">
+                    <div class="elementor-container elementor-column-gap-default">
+                        <div class="elementor-row">
+                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-4952d6b"
+                                 data-id="4952d6b" data-element_type="column">
+                                <div class="elementor-column-wrap elementor-element-populated">
+                                    <div class="elementor-widget-wrap">
+                                        <div class="elementor-element elementor-element-417aa0e elementor-widget elementor-widget-woocommerce-breadcrumb"
+                                             data-id="417aa0e" data-element_type="widget"
+                                             data-widget_type="woocommerce-breadcrumb.default">
+                                            <div class="elementor-widget-container">
+                                                <nav class="woocommerce-breadcrumb"><a href="">Maintenance
+                                                        n°: {{ maintenance.id }} </a></nav>
+                                                <nav class="woocommerce-breadcrumb"><a
+                                                            href="">Location: </a> {{ maintenance.adresse }}
+                                                </nav>
+                                            </div>
+                                        </div>
+                                        <div class="elementor-element elementor-element-60901d3 elementor-widget elementor-widget-woocommerce-product-content"
+                                             data-id="60901d3" data-element_type="widget"
+                                             data-widget_type="woocommerce-product-content.default">
+                                            <div class="elementor-widget-container">
+                                                <h2>Etat: {{ maintenance.etat }} </h2>
+                                                <p>Description : {{ maintenance.description }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="elementor-element elementor-element-9cbe1f3 elementor-widget elementor-widget-heading"
+                                             data-id="9cbe1f3" data-element_type="widget"
+                                             data-widget_type="heading.default">
+                                            <div class="elementor-widget-container">
+                                                <h3 class="elementor-heading-title elementor-size-default">Réclamation
+                                                    n° :{{ maintenance.reclamation.id }}</h3>
+                                                <h3 class="elementor-heading-title elementor-size-default"> Reference
+                                                    piece rechange : {{ maintenance.idProduit.id }}</h3>
+                                                <h3 class="elementor-heading-title elementor-size-default">Période</h3>
+                                            </div>
+                                        </div>
+                                        <div class="elementor-element elementor-element-b6a7112 elementor-widget elementor-widget-woocommerce-product-short-description"
+                                             data-id="b6a7112" data-element_type="widget"
+                                             data-widget_type="woocommerce-product-short-description.default">
+                                            <div class="elementor-widget-container">
+                                                <div class="woocommerce-product-details__short-description">
+                                                    <p>
+                                                        date {{ maintenance.DateDebut ? maintenance.DateDebut|date('Y-m-d') : '' }}</p>
+                                                    <p>
+                                                        date {{ maintenance.DateFin ? maintenance.DateFin|date('Y-m-d') : '' }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+            {% endif %}
+        {% endfor %}
+
+
+    {% else %}
+        <p>Veuillez vous connecter</p>
+    {% endif %}
+
+
+
+{% endblock %}
+{% block jstable %}
+
+
+{% endblock %}

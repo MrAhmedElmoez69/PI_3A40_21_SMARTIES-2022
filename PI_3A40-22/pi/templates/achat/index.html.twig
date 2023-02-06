@@ -1,0 +1,100 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Achat index{% endblock %}
+
+{% block main %}
+    <style>
+        table, th, td {
+            border:2px solid black;}
+        tr:hover {background-color: #4ECDC4}
+    </style>
+    <h3><i class="fa fa-angle-right"></i> Achat index</h3>
+    <a href="{{ path('achat_new') }}">Create new</a>
+
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <div class="row mb">
+                <!-- page start-->
+                <div class="content-panel">
+                    <div class="adv-table">
+                        <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered"
+                               id="hidden-table-info">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>IdUser</th>
+                                <th>IdProduit</th>
+                                <th>Date</th>
+                                <th>NomClient</th>
+                                <th>Nombre Achetée</th>
+                                <th>actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for achat in achats %}
+                                <tr>
+                                    <td>{{ achat.id }}</td>
+                                    <td>{{ achat.idUser }}</td>
+                                    <td>{{ achat.idProduit }}</td>
+                                    <td>{{ achat.date ? achat.date|date('Y-m-d') : '' }}</td>
+                                    <td>{{ achat.nomClient }}</td>
+                                    <td>{{ achat.numeroClient }}</td>
+                                    <td>
+                                        <a type="button"  class="btn btn-success btn-xs fa fa-eye" href="{{ path('achat_show', {'id': achat.id}) }}"> show</a>
+                                        <a type="button"  class="btn btn-primary btn-xs fa fa-pencil" href="{{ path('achat_edit', {'id': achat.id}) }}"> edit</a>
+                                        <form method="post" action="{{ path('achat_delete', {'id': achat.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ achat.id) }}">
+                                            <button  class="btn btn-danger btn-xs fa fa-trash-o">delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="5">no records found</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- page end-->
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg-1"></div>
+    <!-- /row -->
+{% endblock %}
+{% block jstable %}
+    <script type="text/javascript" language="javascript"
+            src={{ asset("lib/advanced-datatable/js/jquery.js") }}></script>
+    <script type="text/javascript" language="javascript"
+            src={{ asset("lib/advanced-datatable/js/jquery.dataTables.js") }}></script>
+    <script type="text/javascript" src={{ asset("lib/advanced-datatable/js/DT_bootstrap.js") }}></script>
+    <script type="text/javascript">
+        function fnFormatDetails(oTable, nTr) {
+            var aData = oTable.fnGetData(nTr);
+            return sOut;
+        }
+
+        $(document).ready(function () {
+            var nCloneTh = document.createElement('th');
+            var nCloneTd = document.createElement('td');
+            nCloneTd.innerHTML = '<img src={{ asset("lib/advanced-datatable/images/details_open.png") }}>';
+            nCloneTd.className = "center";
+
+            var oTable = $('#hidden-table-info').dataTable({
+                "aoColumnDefs": [{
+                    "bSortable": false,
+                    "searchable": false,
+                    "aTargets": [6]
+                }],
+                "aaSorting": [
+                    [0, 'asc']
+                ]
+            });
+
+        });
+    </script>
+{% endblock %}

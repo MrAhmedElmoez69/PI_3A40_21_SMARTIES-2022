@@ -1,0 +1,22 @@
+
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+   {{ form_errors(form.date) }}
+    {{ form_label(form.date)}}
+    {{ form_widget(form.date) }}
+<br>
+{{ form_errors(form.description) }}
+    {{ form_label(form.description, NULL, {'label_attr': {'class': 'datepicker'}}) }}
+    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.objet) }}
+    {{ form_label(form.objet, NULL, {'label_attr': {'class': 'datepicker'}}) }}
+    {{ form_widget(form.objet, {'attr': {'class': 'form-control'}}) }}
+<br>
+{{ form_errors(form.idUser) }}
+    {{ form_label(form.idUser, NULL, {'label_attr': {'class': 'control-label col-lg-2'}}) }}
+    {{ form_widget(form.idUser, {'attr': {'class': 'form-control'}}) }}
+<br>
+
+<button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

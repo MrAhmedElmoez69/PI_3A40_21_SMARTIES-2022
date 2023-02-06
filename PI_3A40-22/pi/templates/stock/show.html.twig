@@ -1,0 +1,38 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Stock{% endblock %}
+
+{% block main %}
+    <h1>Stock</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ stock.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ stock.libelle }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ stock.prix }}</td>
+            </tr>
+            <tr>
+                <th>Quantite</th>
+                <td>{{ stock.quantite }}</td>
+            </tr>
+            <tr>
+                <th>Disponibilite</th>
+                <td>{{ stock.disponibilite }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('stock_index') }}"><button type="button" class="btn btn-theme02"><i class="fa fa-backward"></i> Back</button></a>
+
+    <a href="{{ path('stock_edit', {'id': stock.id}) }}"><button type="button" class="btn btn-theme02"><i class="fa fa-edit "></i> Modifier</button></a>
+
+    {{ include('stock/_delete_form.html.twig') }}
+{% endblock %}

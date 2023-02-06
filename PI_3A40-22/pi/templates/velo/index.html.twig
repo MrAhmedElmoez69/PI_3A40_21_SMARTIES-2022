@@ -1,0 +1,50 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Velo index{% endblock %}
+
+{% block main %}
+<h3><i class="fa fa-angle-right"></i> Velo index</h3>
+<a href="{{ path('velo_new') }}">Create new</a>
+<div class="row mb">
+    <!-- page start-->
+    <div class="content-panel">
+        <div class="adv-table">
+            <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Age</th>
+                <th>Couleur</th>
+                <th>Etat</th>
+                <th>Quantite</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for velo in velos %}
+            <tr>
+                <td>{{ velo.id }}</td>
+                <td>{{ velo.type }}</td>
+                <td>{{ velo.age }}</td>
+                <td>{{ velo.couleur }}</td>
+                <td>{{ velo.etat }}</td>
+                <td>{{ velo.quantite }}</td>
+                <td>
+                    <a href="{{ path('velo_show', {'id': velo.id}) }}">show</a>
+                    <a href="{{ path('velo_edit', {'id': velo.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- page end-->
+</div>
+    <!-- /row -->
+{% endblock %}
